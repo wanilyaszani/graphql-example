@@ -1,18 +1,12 @@
 package com.example.graphqlexample;
 
+import com.google.common.collect.ImmutableMap;
 import graphql.schema.DataFetcher;
-import graphql.schema.DataFetchingEnvironment;
-import graphql.schema.PropertyDataFetcher;
-
-
-
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.Arrays;
-
-
 
 @Component
 public class GraphQLDataFetchers {
@@ -57,7 +51,7 @@ public class GraphQLDataFetchers {
 
     public DataFetcher getAuthorDataFetcher() {
         return dataFetchingEnvironment -> {
-            Map<String,String> book = dataFetchingEnvironment.getSource();
+            Map<String, String> book = dataFetchingEnvironment.getSource();
             String authorId = book.get("authorId");
             return authors
                     .stream()
